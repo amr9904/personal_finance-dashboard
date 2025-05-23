@@ -1,0 +1,288 @@
+ /* =========================================
+   ROOT VARIABLES & GLOBAL RESETS
+   ========================================= */
+
+/* Color palette, spacing, and other reusable values */
+:root {
+    --primary: #4caf50;
+    --primary-dark: #388e3c;
+    --error: #f44336;
+    --warning: #ff9800;
+    --background: #0a0d14;
+    --surface: #1a1d23;
+    --surface-light: #2a2d33;
+    --text: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --border-radius: 12px;
+    --spacing: 1.5rem;
+}
+
+/* A universal box-sizing reset for easier layout calculations */
+* {
+    box-sizing: border-box;
+}
+
+/* =========================================
+   BASE STYLING
+   ========================================= */
+
+/* Body defaults: font, colors, spacing */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Wrapper to center and constrain content width */
+.wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing);
+    gap: var(--spacing);
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+/* Header with gradient background and styled title */
+.header {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: var(--spacing);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title with gradient text */
+.header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--primary) 0%, #81c784 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+/* =========================================
+   TRANSACTION FORM SECTION
+   ========================================= */
+
+/* Container for the add-transaction form */
+.add-transaction {
+    background: var(--surface);
+    border-radius: var(--border-radius);
+    padding: var(--spacing);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: var(--spacing);
+}
+
+/* Spacing between form inputs and labels */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* =========================================
+   FORM CONTROLS
+   ========================================= */
+
+/* Inputs, selects, and buttons share consistent styling */
+input,
+select,
+button {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--surface-light);
+    background: var(--surface-light);
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Focus state with outlined effect */
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Buttons have a primary background and slight hover animation */
+button {
+    background: var(--primary);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   SUMMARY CARDS SECTION
+   ========================================= */
+
+/* Flex layout for the summary section */
+.summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+/* Each card displays key financial metrics */
+.card {
+    flex: 1 1 calc(50% - var(--spacing));
+    background: var(--surface);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Hover animation on summary cards */
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Subtle style for card titles */
+.card h3 {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Emphasized number styling */
+.card p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary);
+}
+
+/* =========================================
+   CHARTS SECTION (GRID LAYOUT)
+   ========================================= */
+
+/* The charts section uses a grid for layout */
+.charts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing);
+    margin-top: var(--spacing);
+}
+
+/* The main (Income vs Expenses) chart spans all columns */
+.types-chart {
+    grid-column: span 3;
+    background: var(--surface);
+    border-radius: var(--border-radius);
+    padding: var(--spacing);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Category charts each occupy a single grid cell */
+.categories-chart {
+    background: var(--surface);
+    border-radius: var(--border-radius);
+    padding: var(--spacing);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design: all charts become one column wide on smaller screens */
+@media (max-width: 768px) {
+    .charts {
+        grid-template-columns: 1fr;
+    }
+    .types-chart {
+        grid-column: span 1;
+    }
+    .categories-chart {
+        grid-column: span 1;
+    }
+
+    /* Smaller header title for mobile */
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* =========================================
+   TRANSACTION HISTORY SECTION
+   ========================================= */
+
+/* Container for the transaction history list */
+.history {
+    background: var(--surface);
+    border-radius: var(--border-radius);
+    padding: var(--spacing);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin-top: var(--spacing);
+}
+
+/* Scrollable list of recent transactions */
+.history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Each transaction is presented as a flex item */
+.history li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--surface-light);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply a fade-in animation to cards, charts, and history list items */
+.card,
+.chart,
+.history li {
+    animation: fadeIn 0.3s ease-out;
+}
+.clear-button {
+    margin-top: 1rem;
+    background: var(--error);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}

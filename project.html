@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Finance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head> 
+<body>
+    <div class="wrapper">
+        <header class="header"> 
+            <h1>Finance Dashboard</h1>
+            <p>Track and manage your personal finances with ease</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Transaction Form -->
+            <section class="add-transaction">
+                <h2>New Transaction</h2>
+                <form id="transactionForm">
+                    <div class="form-group">
+                        <label for="type">Transaction Type</label>
+                        <select id="type" name="type" required>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                            <option value="bill">Bill</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <div class="category-field">
+                            <select id="category" name="category" required></select>
+                            <button type="button" id="addCategoryButton" class="icon-button">+</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" name="amount" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="summary">
+                <div class="card income">
+                    <h3>Total Income</h3>
+                    <p id="totalIncome">$0.00</p>
+                </div>
+                <div class="card expenses">
+                    <h3>Total Expenses</h3>
+                    <p id="totalExpenses">$0.00</p>
+                </div>
+                <div class="card bills">
+                    <h3>Total Bills</h3>
+                    <p id="totalBills">$0.00</p>
+                </div>
+                <div class="card savings">
+                    <h3>Net Savings</h3>
+                    <p id="netSavings">$0.00</p>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts">
+                <div class="chart types-chart">
+                    <h3>Income vs Expenses</h3>
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+                <div class="chart categories-chart">
+                    <h3>Income Categories</h3>
+                    <canvas id="incomeChart"></canvas>
+                </div>
+                <div class="chart categories-chart">
+                    <h3>Expense Categories</h3>
+                    <canvas id="expenseChart"></canvas>
+                </div>
+                <div class="chart categories-chart">
+                    <h3>Bill Categories</h3>
+                    <canvas id="billChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Transaction History -->
+            <section class="history">
+                <h2>Recent Transactions</h2>
+                <ul id="transactionList">
+                    <li class="placeholder">No transactions yet</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script> 
+</body>
+</html>
